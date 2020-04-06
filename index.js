@@ -66,7 +66,7 @@ bot.on('message', message=>{
                            const banReason = arg[2];
                        }
 
-                       const member = message.mentions.members.first() || message.guild.members.cache.get(args[1]);
+                       const banPerson = message.mentions.members.first() || message.guild.members.cache.get(args[1]);
 
                        if (!member){
                            message.reply("Kullanıcı bulunamadı.")
@@ -86,7 +86,7 @@ bot.on('message', message=>{
 
                                     } catch (error) {
                                         message.reply("Bir hata oluştu.");
-                                        message.reply(member)
+                                        message.reply(banPerson)
 
                                     }
                                 }
