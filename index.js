@@ -11,7 +11,7 @@ bot.on('message', message=>{
         case "sa":
             message.channel.send("Aleyküm Selam");
             break;   
-        case "fuat aşkım nasılsın":
+        case " aşkım nasılsın":
             message.channel.send("iyiyim aşkım sen nasılsın");
             break;
             
@@ -80,10 +80,14 @@ bot.on('message', message=>{
                                     try {
                                         member.ban({ days: 7, reason: banReason });
                                         message.reply("Kullanıcı başarıyla banlandı.")
+                                        
+
 
 
                                     } catch (error) {
-                                        message.reply("Bir hata oluştu.")
+                                        message.reply("Bir hata oluştu.");
+                                        message.reply(member)
+
                                     }
                                 }
                             }
