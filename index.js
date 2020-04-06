@@ -11,7 +11,7 @@ bot.on('message', message=>{
         case "sa":
             message.channel.send("Aleyküm Selam");
             break;   
-        case "themeka aşkım botum nasılsın":
+        case "berat aşkım nasılsın":
             message.channel.send("iyiyim aşkım sen nasılsın");
             break;
             
