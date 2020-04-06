@@ -22,8 +22,18 @@ bot.on('message', message=>{
     let arg = message.content.substring(prefix.length).split(" ");
 
     switch (arg[0]) {
+            case "clear":
+            
+                 if(message.member.roles.cache.find(r => r.name === "KURUCU")){
+                     if (!arg[1]) {
+                         message.reply("Lütfen sayı belirtin!")
+                     }else {
+                        message.channel.bulkDelete(arg[1])
+                     }
+                 }
+            break;
             case "instagram":
-                message.channel.send("Themeka Instagram Hesabı : fuatogur.php")
+                message.channel.send("FuatOgur Instagram Hesabı : fuatogur.php")
             break;
             case "profil":
                 let dateMonth = message.author.createdAt.getMonth();
