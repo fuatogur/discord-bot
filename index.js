@@ -6,7 +6,7 @@ const prefix = 'ogr!';
 
 
 bot.on('message', message=>{  
-    let arg = message.content.toLowerCase().slice(prefix.length).split(" ");
+    let arg = message.content.toLowerCase();
     switch (arg) {
         case "sa":
             message.channel.send("Aleyküm Selam");
