@@ -24,7 +24,11 @@ bot.on('message', message=>{
     switch (arg[0]) {
             case "clear":
             
-                 if(message.member.roles.cache.find(r => r.name === "KURUCU") || message.member.roles.cache.find(r=>r.name==="ADMİNATÖR") || message.member.roles.cache.find(r=>r.name==="YÖNETİCİ") ){
+                 if(message.member.roles.cache.find(r => r.name=== "KURUCU") ||
+                    message.member.roles.cache.find(r=>r.name  ==="ADMİNATÖR") ||
+                    message.member.roles.cache.find(r=>r.name  ==="YÖNETİCİ") ||
+                    message.member.roles.cache.find(r=>r.name==="ASİL ÜYE")||
+                    message.member.roles.cache.find(r=>r.name==="ADMİN")){
                      if (!arg[1]) {
                          message.reply("Lütfen sayı belirtin!")
                      }else {
