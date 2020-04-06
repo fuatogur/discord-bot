@@ -11,7 +11,7 @@ bot.on('message', message=>{
         case "sa":
             message.channel.send("Aleyküm Selam");
             break;   
-        case "berat aşkım nasılsın":
+        case "fuat aşkım nasılsın":
             message.channel.send("iyiyim aşkım sen nasılsın");
             break;
             
@@ -54,29 +54,52 @@ bot.on('message', message=>{
                 message.channel.send(embed);
             break;
             case "ban":
-                if (message.member.roles.cache.find(r => r.name==="ADMİNATÖR") || message.member.roles.cache.find(r => r.name==="Kurucu") || message.member.roles.cache.find(r => r.name==="Admin") ){
+               if(message.member.hasPermission("BAN_MEMBERS")){
+                if(message.guild.me.hasPermission("BAN_MEMBERS")){
+                   if(!arg[1]){
+                       message.reply("Lütfen banlanacak kişiyi belirtin")
+                   }else{
+                       if (!arg[2]) {
+                           const banReason = "Belirtilmemiş."
+                       }
+                       else{
+                           const banReason = arg[2];
+                       }
 
-                        const user = message.mentions.users.first();
-                        ;
-                        if (!arg[1]) {
-                            message.channel.send("Bu komut üzerinde ş")   
-                        }
+                       const member = message.mentions.members.first() || message.guild.members.cache.get(args[1]);
 
-                        if(user){
+                       if (!member){
+                           message.reply("Kullanıcı bulunamadı.")
+                       }else{
+                            if(message.author.id == member.id){
+                                message.reply("Kendini banlayamazsın güzellik. ")
+                            }else{
+                                if(!member.bannable){
+                                    message.reply("Maalesef bu kişiyi banlayamıyorum.")
+                                }else{
+                                    try {
+                                        member.ban({ days: 7, reason: banReason });
+                                        message.reply("Kullanıcı başarıyla banlandı.")
 
-                        }
+
+                                    } catch (error) {
+                                        message.reply("Bir hata oluştu.")
+                                    }
+                                }
+                            }
+
+                       }
+
+                   }
+                }else{
+                    message.reply("Üzgünüm! Birini banlama yetkim yok. Lütfen bir yetkiliyle görüşün.")
                 }
-                else{
-                    message.reply("Bunu kullanmaya yetkiniz yok.")
-                }
+               }else{
+                   message.reply("Bir kullanıcıyı banlama yetkiniz yok.")
+               }
             break;
             case "kick":
-                if (message.member.roles.cache.find(r => r.name==="ADMİNATÖR") || message.member.roles.cache.find(r => r.name==="Kurucu") || message.member.roles.cache.find(r => r.name==="Admin")){
-                    message.reply("Bu komut üzerinde çalışıyoruz.")
-                }
-                else{
-                    message.reply("Bunu kullanmaya yetkiniz yok.")
-                }
+               
             break;
             
             
