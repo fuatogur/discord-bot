@@ -54,53 +54,7 @@ bot.on('message', message=>{
                 message.channel.send(embed);
             break;
             case "ban":
-               if(message.member.hasPermission("BAN_MEMBERS")){
-                if(message.guild.me.hasPermission("BAN_MEMBERS")){
-                   if(!arg[1]){
-                       message.reply("Lütfen banlanacak kişiyi belirtin")
-                   }else{
-                       if (!arg[2]) {
-                           const banReason = "Belirtilmemiş."
-                       }
-                       else{
-                           const banReason = arg[2];
-                       }
-
-                       const banPerson = message.mentions.members.first() || message.guild.members.cache.get(args[1]);
-
-                       if (!member){
-                           message.reply("Kullanıcı bulunamadı.")
-                       }else{
-                            if(message.author.id == member.id){
-                                message.reply("Kendini banlayamazsın güzellik. ")
-                            }else{
-                                if(!member.bannable){
-                                    message.reply("Maalesef bu kişiyi banlayamıyorum.")
-                                }else{
-                                    try {
-                                        member.ban({ days: 7, reason: banReason });
-                                        message.reply("Kullanıcı başarıyla banlandı.")
-                                        
-
-
-
-                                    } catch (error) {
-                                        message.reply("Bir hata oluştu.");
-                                        message.reply(banPerson)
-
-                                    }
-                                }
-                            }
-
-                       }
-
-                   }
-                }else{
-                    message.reply("Üzgünüm! Birini banlama yetkim yok. Lütfen bir yetkiliyle görüşün.")
-                }
-               }else{
-                   message.reply("Bir kullanıcıyı banlama yetkiniz yok.")
-               }
+               
             break;
             case "kick":
                
