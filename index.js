@@ -1,6 +1,6 @@
 const Discord = require('discord.js');
 const bot = new Discord.Client();
-const token = 'Njk1OTkzOTE2ODI2MTg5OTg0.XoiQ-A.VhpeKnotKR_aOAwfW2hBx2xae6s';
+const token = 'Njk1OTkzOTE2ODI2MTg5OTg0.XoqBaw.M2xSD_Paeutn-jYZtNcUuzpf3FM';
 const Canvas = require('canvas');
 const prefix = 't!';
 
