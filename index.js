@@ -24,7 +24,7 @@ bot.on('message', message=>{
     switch (arg[0]) {
             case "clear":
             
-                 if(message.member.roles.cache.find(r => r.name === "KURUCU")){
+                 if(message.member.roles.cache.find(r => r.name === "KURUCU") || message.member.roles.cache.find(r=>r.name==="ADMİNATÖR") ){
                      if (!arg[1]) {
                          message.reply("Lütfen sayı belirtin!")
                      }else {
