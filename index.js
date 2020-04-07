@@ -61,7 +61,13 @@ bot.on('message', message=>{
                
             break;
             case "kick":
-               
+               if(message.member.hasPermission("KICK_MEMBERS")){
+                    if(message.member.hasPermission("KICK_MEMBERS")){
+                        message.channel.send("YETKİM VAR.")
+                    }
+               }else{
+                   message.reply("Bunu yapmaya yetkiniz yok.")
+               }
             break;
             
             
