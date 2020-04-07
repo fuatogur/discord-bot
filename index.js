@@ -41,6 +41,9 @@ bot.on('message', message=>{
             case "instagram":
                 message.channel.send("FuatOgur Instagram Hesabı : fuatogur.php")
             break;
+            case "themeka-instagram":
+                message.channel.send("Thmeka Instagram Hesabı : mhmtbayraktar")
+            break;
             case "profil":
                 let dateMonth = message.author.createdAt.getMonth();
                 let dateYear = message.author.createdAt.getFullYear();
