@@ -61,9 +61,13 @@ bot.on('message', message=>{
                
             break;
             case "kick":
+
+                 const Member = message.mentions.users.first();
                if(message.member.hasPermission("KICK_MEMBERS")){
                     if(message.member.hasPermission("KICK_MEMBERS")){
-                        message.channel.send("YETKİM VAR.")
+                        message.channel.send(Member)
+                    }else{
+                        message.reply("Maalesef bir kişiyi banlama yetkim yok.")
                     }
                }else{
                    message.reply("Bunu yapmaya yetkiniz yok.")
