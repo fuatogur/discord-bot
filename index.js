@@ -75,7 +75,7 @@ bot.on('message', message => {
                                 var reason = "Belirtilmemiş."
                             }else{
                                 var reason = arg[3];
-                                guild.members.ban(user, { reason: reason, days: arg[2] });
+                                guild.members.kick(user);
                             }
                         }
                     } else {
