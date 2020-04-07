@@ -2,7 +2,7 @@ const Discord = require('discord.js');
 const bot = new Discord.Client();
 const token = 'Njk1OTkzOTE2ODI2MTg5OTg0.XoqBaw.M2xSD_Paeutn-jYZtNcUuzpf3FM';
 const Canvas = require('canvas');
-const prefix = 'ogr!';
+const prefix = 't!';
 
 
 bot.on('message', message=>{  
@@ -24,17 +24,18 @@ bot.on('message', message=>{
     switch (arg[0]) {
             case "clear":
             
-                 if(message.member.roles.cache.find(r => r.name=== "KURUCU") ||
-                    message.member.roles.cache.find(r=>r.name  ==="ADMİNATÖR") ||
-                    message.member.roles.cache.find(r=>r.name  ==="YÖNETİCİ") ||
-                    message.member.roles.cache.find(r=>r.name==="ASİL ÜYE")||
-                    message.member.roles.cache.find(r=>r.name==="ADMİN")){
+                 if(message.member.roles.cache.find(r => r.name=== "Kurucu") ||
+                    message.member.roles.cache.find(r=>r.name  ==="Admin") ||
+                    message.member.roles.cache.find(r=>r.name  ==="Moderatör")){
                      if (!arg[1]) {
                          message.reply("Lütfen sayı belirtin!")
                      }else {
                         message.channel.bulkDelete(arg[1])
                         message.channel.send("Son "+arg[1] + " mesaj silindi.")
                      }
+                 }else{
+                     message.delete();
+                     message.channel.send("Böyle bir yetkiniz yok")
                  }
             break;
             case "instagram":
