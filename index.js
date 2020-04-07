@@ -42,7 +42,7 @@ bot.on('message', message=>{
                 message.channel.send("FuatOgur Instagram Hesabı : fuatogur.php")
             break;
             case "themeka-instagram":
-                message.channel.send("Thmeka Instagram Hesabı : mhmtbayraktar")
+                message.channel.send("Themeka Instagram Hesabı : mhmtbayraktar")
             break;
             case "profil":
                 let dateMonth = message.author.createdAt.getMonth();
