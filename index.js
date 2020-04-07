@@ -62,11 +62,11 @@ bot.on('message', message=>{
             break;
             case "kick":
 
-                 const user = message.mentions.users.first();
-                 const member = member.guild.cache.member(user);
+                 const user = message.mentions.users.first().id;
+                
                if(message.member.hasPermission("KICK_MEMBERS")){
                     if(message.member.hasPermission("KICK_MEMBERS")){
-                        message.channel.send(member)
+                        message.channel.send(user)
                     }else{
                         message.reply("Maalesef bir kişiyi banlama yetkim yok.")
                     }
