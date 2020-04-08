@@ -63,6 +63,7 @@ bot.on('message', message => {
         case "kick":
 
             const user = message.mentions.users.first();
+            return message.reply(user.tag);
 
 
             if (message.member.hasPermission("KICK_MEMBERS")) {
