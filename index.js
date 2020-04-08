@@ -76,9 +76,7 @@ bot.on('message',  message => {
                                 var reason = "Belirtilmemiş."
                             }else{
                                 var reason = arg[3];
-                                fuatogur.ban({ days: 7, reason: 'They deserved it' })
-  .then(console.log)
-  .catch(console.error);
+                                fuatogur.kick();
                             }
                         }
                     } else {
