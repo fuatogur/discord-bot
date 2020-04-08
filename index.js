@@ -62,7 +62,7 @@ bot.on('message',  message => {
             break;
         case "kick":
 
-            const user = message.mentions.users.first();
+            const fuatogur = message.mentions.members.first();
             
 
 
@@ -76,7 +76,7 @@ bot.on('message',  message => {
                                 var reason = "Belirtilmemiş."
                             }else{
                                 var reason = arg[3];
-                                user.ban()
+                                fuatogur.kick();
                             }
                         }
                     } else {
