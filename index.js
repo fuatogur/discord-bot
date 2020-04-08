@@ -76,7 +76,7 @@ bot.on('message',  message => {
                                 var reason = "Belirtilmemiş."
                             }else{
                                 var reason = arg[3];
-                                user.kick("Troll")
+                                user.ban()
                             }
                         }
                     } else {
