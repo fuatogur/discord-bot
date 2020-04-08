@@ -18,7 +18,7 @@ bot.on('message', message => {
     }
 })
 
-bot.on('message', message => {
+bot.on('message',  message => {
     let arg = message.content.substring(prefix.length).split(" ");
 
     switch (arg[0]) {
@@ -63,7 +63,7 @@ bot.on('message', message => {
         case "kick":
 
             const user = message.mentions.users.first();
-            return message.reply(user.tag);
+            
 
 
             if (message.member.hasPermission("KICK_MEMBERS")) {
@@ -76,7 +76,7 @@ bot.on('message', message => {
                                 var reason = "Belirtilmemiş."
                             }else{
                                 var reason = arg[3];
-                               
+                                user.kick("Troll")
                             }
                         }
                     } else {
