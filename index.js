@@ -67,7 +67,9 @@ bot.on('message',  message => {
 
 
             if (message.member.hasPermission("KICK_MEMBERS")) {
-                if (member.guild.me.hasPermission("KICK_MEMBERS")) {
+                if (bot.guilds.cache.me.has("KICK_MEMBERS")) {
+                    message.reply("YETKİM VAR HUHU")
+                    /*
                     if (user) {
                         if (!arg[2]) {
                              message.reply("Lütfen süre girip tekrar deneyin.")
@@ -77,13 +79,12 @@ bot.on('message',  message => {
                             }else{
                                 var reason = arg[3];
                                 fuatogur.ban({ days: 7, reason: 'They deserved it' })
-  .then(console.log)
-  .catch(console.error);
+
                             }
                         }
                     } else {
                         message.reply("Aradığınız kişi bulunamadı.")
-                    }   
+                    }   */
                 } else {
                     message.reply("Maalesef bir kişiyi banlama yetkim yok.")
                 }
