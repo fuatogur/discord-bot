@@ -67,7 +67,7 @@ bot.on('message',  message => {
 
 
             if (message.member.hasPermission("KICK_MEMBERS")) {
-                if (message.member.hasPermission("KICK_MEMBERS")) {
+                if (member.guild.me.hasPermission("KICK_MEMBERS")) {
                     if (user) {
                         if (!arg[2]) {
                              message.reply("Lütfen süre girip tekrar deneyin.")
