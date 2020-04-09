@@ -18,7 +18,7 @@ bot.on('message', message => {
     }
 })
 
-client.on("ready", () => {
+bot.on("ready", () => {
     console.log(`Hi, ${client.user.username} is now online!`);
 
     client.user.setPresence({
