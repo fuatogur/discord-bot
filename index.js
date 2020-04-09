@@ -21,6 +21,8 @@ const applyText = (canvas, text) => {
 
 
 bot.on('message', message => {
+
+    if(message.author.bot) return;
     let arg = message.content.toLowerCase();
     switch (arg) {
         case "sa":
@@ -29,6 +31,9 @@ bot.on('message', message => {
         case " aşkım nasılsın":
             message.channel.send("iyiyim aşkım sen nasılsın");
             break;
+        case "nasıl geçti günün":
+            message.channel.send("seni hiç alakadar etmez.")
+        break;
 
     }
 })
