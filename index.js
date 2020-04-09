@@ -18,6 +18,19 @@ bot.on('message', message => {
     }
 })
 
+client.on("ready", () => {
+    console.log(`Hi, ${client.user.username} is now online!`);
+
+    client.user.setPresence({
+        status: "online",
+        game: {
+            name: "Geliştiriliyor",
+            type: "STREAMING"
+        }
+    }); 
+})
+
+
 bot.on('message',  message => {
     let arg = message.content.substring(prefix.length).split(" ");
 
@@ -67,9 +80,9 @@ bot.on('message',  message => {
 
 
             if (message.member.hasPermission("KICK_MEMBERS")) {
-                if (bot.guilds.cache.me.has("KICK_MEMBERS")) {
+                if () ("KICK_MEMBERS")) {
                     message.reply("YETKİM VAR HUHU")
-                    /*
+                    
                     if (user) {
                         if (!arg[2]) {
                              message.reply("Lütfen süre girip tekrar deneyin.")
@@ -84,7 +97,7 @@ bot.on('message',  message => {
                         }
                     } else {
                         message.reply("Aradığınız kişi bulunamadı.")
-                    }   */
+                    }   
                 } else {
                     message.reply("Maalesef bir kişiyi banlama yetkim yok.")
                 }
