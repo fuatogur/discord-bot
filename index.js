@@ -3,6 +3,21 @@ const bot = new Discord.Client();
 const token = 'Njk1OTkzOTE2ODI2MTg5OTg0.XoqBaw.M2xSD_Paeutn-jYZtNcUuzpf3FM';
 const Canvas = require('canvas');
 const prefix = 't!';
+const applyText = (canvas, text) => {
+    const ctx = canvas.getContext('2d');
+
+    // Declare a base size of the font
+    let fontSize = 70;
+
+    do {
+        // Assign the font to the context and decrement it so it can be measured again
+        ctx.font = `${fontSize -= 10}px sans-serif`;
+        // Compare pixel width of the text to the canvas minus the approximate avatar size
+    } while (ctx.measureText(text).width > canvas.width - 300);
+
+    // Return the result to use in the actual canvas
+    return ctx.font;
+};
 
 
 bot.on('message', message => {
@@ -23,13 +38,8 @@ bot.on('message', message => {
 bot.on("ready", () => {
     console.log(`Hi, ${bot.user.username} is now online!`);
 
-    bot.user.setPresence({
-        status: "online",
-        game: {
-            name: "Geliştiriliyor",
-            type: "PLAYING"
-        }
-    }); 
+    
+    bot.user.setActivity('GELİŞTİRİLİYOR',{type: 'PLAYING'}).catch(console.error);
 })
 
 
@@ -180,21 +190,7 @@ bot.on('message',  message => {
 
     }
 });
-const applyText = (canvas, text) => {
-    const ctx = canvas.getContext('2d');
 
-    // Declare a base size of the font
-    let fontSize = 70;
-
-    do {
-        // Assign the font to the context and decrement it so it can be measured again
-        ctx.font = `${fontSize -= 10}px sans-serif`;
-        // Compare pixel width of the text to the canvas minus the approximate avatar size
-    } while (ctx.measureText(text).width > canvas.width - 300);
-
-    // Return the result to use in the actual canvas
-    return ctx.font;
-};
 
 bot.on('guildMemberAdd', async member => {
     function memberCounter() {
