@@ -19,9 +19,9 @@ bot.on('message', message => {
 })
 
 bot.on("ready", () => {
-    console.log(`Hi, ${client.user.username} is now online!`);
+    console.log(`Hi, ${bot.user.username} is now online!`);
 
-    client.user.setPresence({
+    bot.user.setPresence({
         status: "online",
         game: {
             name: "Geliştiriliyor",
