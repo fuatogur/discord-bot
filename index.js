@@ -76,7 +76,7 @@ bot.on('message',  message => {
 
             break;
         case "kick":
-
+            if(message.deletable) message.delete();
             const fuatogur = message.mentions.members.first();
             
 
@@ -101,7 +101,13 @@ bot.on('message',  message => {
                                     if(fuatogur.id === message.author.id){
                                         return message.reply("Kendini atamazsın.")
                                     }else{
-                                        fuatogur.kick(arg[2])
+                                        try {
+                                            fuatogur.kick(arg[2])
+                                            message.channel.send(`${fuatogur} ${fuatogur.id} adlı kullanıcı ${message.author.username} ${message.author.id} tarafından sunucudan atılmıştır.`)
+                                        } catch (error) {
+                                            
+                                        }
+                                        
                                     }
                                 }
                              }
