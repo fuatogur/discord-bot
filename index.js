@@ -78,9 +78,9 @@ bot.on('message',  message => {
             const fuatogur = message.mentions.members.first();
             
 
-
+            /*
             if (message.member.hasPermission("KICK_MEMBERS")) {
-                /*
+                
                 if () ("KICK_MEMBERS")) {
                     message.reply("YETKİM VAR HUHU")
                     
@@ -104,9 +104,9 @@ bot.on('message',  message => {
                 }
             } else {
                 message.reply("Bunu yapmaya yetkiniz yok.")
-            }
+            }*/
             break;
-            */ 
+            
 
 
 
