@@ -34,6 +34,9 @@ bot.on("ready", () => {
 
 
 bot.on('message',  message => {
+
+    if(message.author.bot) return;
+
     let arg = message.content.substring(prefix.length).split(" ");
 
     switch (arg[0]) {
@@ -151,7 +154,7 @@ bot.on('message',  message => {
                                         return message.reply("Kendini atamazsın.")
                                     }else{
                                         try {
-                                            toKick.kick(arg[2])
+                                            toKick.kick({reason: arg[2]})
                                             message.channel.send(`${toKick}  adlı kullanıcı ${message.author.username}  tarafından sunucudan atılmıştır.`)
                                         } catch (error) {
                                             message.channel.send("Bir hata oluştu.")
@@ -170,6 +173,7 @@ bot.on('message',  message => {
                 return message.reply("Bunu yapmaya yetkiniz yok.")
             }
             break;
+            
             
 
 
