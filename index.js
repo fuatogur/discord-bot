@@ -74,7 +74,7 @@ bot.on('message',  message => {
             break;
         case "ban":
             if(message.deletable) message.delete();
-            const fuatogur = message.mentions.members.first();
+            const toBan = message.mentions.members.first();
             
 
             
@@ -90,20 +90,20 @@ bot.on('message',  message => {
                             if(!arg[3]){
                                 return message.reply("Lütfen bir süre belirtin")
                             }else{
-                                if(!fuatogur){
+                                if(!toBan){
                                     return message.reply("Bu kişiyi bulamadım.")
                                 }
                                 else{
-                                   if (!fuatogur.bannable) {
+                                   if (!toBan.bannable) {
                                        return message.reply("Bu kişiyi maaalesef yasaklayamıyorum.")
                                    }
                                    else{
-                                       if(fuatogur.id === message.author.id){
+                                       if(toBan.id === message.author.id){
                                            return message.reply("Kendini yasaklayamazsın.")
                                        }else{
                                            try {
                                             guildMember.ban({ days: arg[3], reason: arg[2] })
-                                               message.channel.send(`${fuatogur}  adlı kullanıcı ${message.author.username}  tarafından ${arg[2]} sebebiyle sunucudan yasaklandı.`)
+                                               message.channel.send(`${toBan}  adlı kullanıcı ${message.author.username}  tarafından ${arg[2]} sebebiyle sunucudan yasaklandı.`)
                                            } catch (error) {
                                                 message.channel.send("Bir hata oluştu.")
                                            }
@@ -126,7 +126,7 @@ bot.on('message',  message => {
             break;
         case "kick":
             if(message.deletable) message.delete();
-            const fuatogur = message.mentions.members.first();
+            const toKick = message.mentions.members.first();
             
 
             
@@ -139,20 +139,20 @@ bot.on('message',  message => {
                          if(!arg[2]){
                              return message.reply("Lütfen bir sebep belirtin")
                          }else{
-                             if(!fuatogur){
+                             if(!toKick){
                                  return message.reply("Bu kişiyi bulamadım.")
                              }
                              else{
-                                if (!fuatogur.kickable) {
+                                if (!toKick.kickable) {
                                     return message.reply("Bu kişiyi maaalesef atamıyorum.")
                                 }
                                 else{
-                                    if(fuatogur.id === message.author.id){
+                                    if(toKick.id === message.author.id){
                                         return message.reply("Kendini atamazsın.")
                                     }else{
                                         try {
-                                            fuatogur.kick(arg[2])
-                                            message.channel.send(`${fuatogur}  adlı kullanıcı ${message.author.username}  tarafından sunucudan atılmıştır.`)
+                                            toKick.kick(arg[2])
+                                            message.channel.send(`${toKick}  adlı kullanıcı ${message.author.username}  tarafından sunucudan atılmıştır.`)
                                         } catch (error) {
                                             message.channel.send("Bir hata oluştu.")
                                         }
