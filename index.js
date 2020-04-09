@@ -80,6 +80,7 @@ bot.on('message',  message => {
 
 
             if (message.member.hasPermission("KICK_MEMBERS")) {
+                /*
                 if () ("KICK_MEMBERS")) {
                     message.reply("YETKİM VAR HUHU")
                     
@@ -105,7 +106,7 @@ bot.on('message',  message => {
                 message.reply("Bunu yapmaya yetkiniz yok.")
             }
             break;
-
+            */ 
 
 
 
