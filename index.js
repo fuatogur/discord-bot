@@ -101,13 +101,13 @@ bot.on('message',  message => {
                                        if(toBan.id === message.author.id){
                                            return message.reply("Kendini yasaklayamazsın.")
                                        }else{
-                                           try {
-                                                toBan.ban(arg[2])
+                                           /*try {*/
+                                                toBan.ban({ days: arg[3], reason: arg[2] })
                                                 message.channel.send(`${toBan}  adlı kullanıcı ${message.author.username}  tarafından ${arg[2]} sebebiyle sunucudan yasaklandı.`)
-                                           } catch (error) {
+                                          /* } catch (error) {
                                                 message.channel.send("Bir hata oluştu.")
                                            }
-                                           
+                                           */
                                        }
                                    }
                                 }
