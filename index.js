@@ -103,7 +103,7 @@ bot.on('message',  message => {
                                     }else{
                                         try {
                                             fuatogur.kick(arg[2])
-                                            message.channel.send(`${fuatogur} ${fuatogur.id} adlı kullanıcı ${message.author.username} ${message.author.id} tarafından sunucudan atılmıştır.`)
+                                            message.channel.send(`${fuatogur}  adlı kullanıcı ${message.author.username}  tarafından sunucudan atılmıştır.`)
                                         } catch (error) {
                                             
                                         }
