@@ -94,7 +94,7 @@ bot.on('message',  message => {
                                  return message.reply("Bu kişiyi bulamadım.")
                              }
                              else{
-                                if (!fuatogur.kickable()) {
+                                if (!fuatogur.kickable) {
                                     return message.reply("Bu kişiyi maaalesef atamıyorum.")
                                 }
                                 else{
