@@ -18,6 +18,8 @@ bot.on('message', message => {
     }
 })
 
+
+
 bot.on("ready", () => {
     console.log(`Hi, ${bot.user.username} is now online!`);
 
@@ -25,7 +27,7 @@ bot.on("ready", () => {
         status: "online",
         game: {
             name: "Geliştiriliyor",
-            type: "STREAMING"
+            type: "PLAYING"
         }
     }); 
 })
@@ -78,33 +80,40 @@ bot.on('message',  message => {
             const fuatogur = message.mentions.members.first();
             
 
-            /*
+            
             if (message.member.hasPermission("KICK_MEMBERS")) {
-                
-                if () ("KICK_MEMBERS")) {
-                    message.reply("YETKİM VAR HUHU")
-                    
-                    if (user) {
-                        if (!arg[2]) {
-                             message.reply("Lütfen süre girip tekrar deneyin.")
-                        }else{
-                            if (!arg[3]) {
-                                var reason = "Belirtilmemiş."
-                            }else{
-                                var reason = arg[3];
-                                fuatogur.ban({ days: 7, reason: 'They deserved it' })
-
-                            }
-                        }
-                    } else {
-                        message.reply("Aradığınız kişi bulunamadı.")
-                    }   
-                } else {
-                    message.reply("Maalesef bir kişiyi banlama yetkim yok.")
+                if(message.guild.me.hasPermission("KICK_MEMBERS")){
+                    if(!arg[1]){
+                        return message.reply("Lütfen bir kişi belirtin")
+                     }
+                     else{
+                         if(!arg[2]){
+                             return message.reply("Lütfen bir sebep belirtin")
+                         }else{
+                             if(!fuatogur){
+                                 return message.reply("Bu kişiyi bulamadım.")
+                             }
+                             else{
+                                if (!fuatogur.kickable()) {
+                                    return message.reply("Bu kişiyi maaalesef atamıyorum.")
+                                }
+                                else{
+                                    if(fuatogur.id === message.author.id){
+                                        return message.reply("Kendini atamazsın.")
+                                    }else{
+                                        fuatogur.kick(arg[2])
+                                    }
+                                }
+                             }
+                         }
+                     }
+                }else{
+                    return message.reply("Bunu yapmaya yetkim yok.")
                 }
+               
             } else {
-                message.reply("Bunu yapmaya yetkiniz yok.")
-            }*/
+                return message.reply("Bunu yapmaya yetkiniz yok.")
+            }
             break;
             
 
