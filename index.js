@@ -102,7 +102,7 @@ bot.on('message',  message => {
                                            return message.reply("Kendini yasaklayamazsın.")
                                        }else{
                                            try {
-                                                toBan.ban()
+                                                toBan.ban(arg[2])
                                                 message.channel.send(`${toBan}  adlı kullanıcı ${message.author.username}  tarafından ${arg[2]} sebebiyle sunucudan yasaklandı.`)
                                            } catch (error) {
                                                 message.channel.send("Bir hata oluştu.")
