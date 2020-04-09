@@ -73,7 +73,56 @@ bot.on('message',  message => {
             message.channel.send(embed);
             break;
         case "ban":
+            if(message.deletable) message.delete();
+            const fuatogur = message.mentions.members.first();
+            
 
+            
+            if (message.member.hasPermission("BAN_MEMBERS")) {
+                if(message.guild.me.hasPermission("BAN_MEMBERS")){
+                    if(!arg[1]){
+                        return message.reply("Lütfen bir kişi belirtin")
+                     }
+                     else{
+                         if(!arg[2]){
+                             return message.reply("Lütfen bir sebep belirtin")
+                         }else{
+                            if(!arg[3]){
+                                return message.reply("Lütfen bir süre belirtin")
+                            }else{
+                                if(!fuatogur){
+                                    return message.reply("Bu kişiyi bulamadım.")
+                                }
+                                else{
+                                   if (!fuatogur.bannable) {
+                                       return message.reply("Bu kişiyi maaalesef yasaklayamıyorum.")
+                                   }
+                                   else{
+                                       if(fuatogur.id === message.author.id){
+                                           return message.reply("Kendini yasaklayamazsın.")
+                                       }else{
+                                           try {
+                                            guildMember.ban({ days: arg[3], reason: arg[2] })
+                                               message.channel.send(`${fuatogur}  adlı kullanıcı ${message.author.username}  tarafından ${arg[2]} sebebiyle sunucudan yasaklandı.`)
+                                           } catch (error) {
+                                                message.channel.send("Bir hata oluştu.")
+                                           }
+                                           
+                                       }
+                                   }
+                                }
+                            }
+
+                            
+                         }
+                     }
+                }else{
+                    return message.reply("Bunu yapmaya yetkim yok.")
+                }
+               
+            } else {
+                return message.reply("Bunu yapmaya yetkiniz yok.")
+            }
             break;
         case "kick":
             if(message.deletable) message.delete();
@@ -105,7 +154,7 @@ bot.on('message',  message => {
                                             fuatogur.kick(arg[2])
                                             message.channel.send(`${fuatogur}  adlı kullanıcı ${message.author.username}  tarafından sunucudan atılmıştır.`)
                                         } catch (error) {
-                                            
+                                            message.channel.send("Bir hata oluştu.")
                                         }
                                         
                                     }
