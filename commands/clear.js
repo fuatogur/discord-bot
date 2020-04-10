@@ -1,6 +1,6 @@
 module.exports = {
-    name: "poll",
-    description: "to make a poll",
+    name: "clear",
+    description: "to clear messages",
     execute(message,arg){
         message.delete();
         if (message.member.hasPermission("BAN_MEMBERS")) {

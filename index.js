@@ -5,6 +5,8 @@ const Canvas = require('canvas');
 const prefix = 't!';
 const fs = require("fs");
 
+Discord
+
 bot.commands =  new Discord.Collection();
 
 const commandFiles = fs.readdirSync("./commands/").filter(f => f.endsWith(".js"));
