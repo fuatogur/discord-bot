@@ -63,7 +63,7 @@ bot.on('message', message => {
             message.channel.send("Themeka Instagram Hesabı : mhmtbayraktar")
             break;
         case "profile":
-            bot.commands.get("profile").execute(message)
+                bot.commands.get("profile").execute(message)
             break;
         case "poll":
                 bot.commands.get("poll").execute(message,arg)

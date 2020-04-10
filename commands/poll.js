@@ -10,7 +10,7 @@ module.exports = {
 
             if (!arg[1]) {
                 message.channel.send(PollEmbed);
-                break;
+                return;
             }
             let msgArgs = arg.slice(1).join(" ");
             const EmbedPoll = new Discord.MessageEmbed()
