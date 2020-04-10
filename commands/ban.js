@@ -1,7 +1,7 @@
 module.exports = {
     name: "ban",
     description: "to ban a member",
-    execute(message,args){
+    execute(message,arg){
         if (message.deletable) message.delete();
             const toBan = message.mentions.members.first();
 

@@ -66,13 +66,13 @@ bot.on('message', message => {
             bot.commands.get("profile").execute(message)
             break;
         case "poll":
-                bot.commands.get("poll").execute(message,args)
+                bot.commands.get("poll").execute(message,arg)
             break;
         case "ban":
-                bot.commands.get("ban").execute(message, args)
+                bot.commands.get("ban").execute(message, arg)
             break;
         case "kick":
-                bot.commands.get("kick").execute(message, args)
+                bot.commands.get("kick").execute(message, arg)
             break;
     //#endregion
 

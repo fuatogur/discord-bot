@@ -1,7 +1,7 @@
 module.exports = {
     name: "poll",
     description: "to make a poll",
-    execute(message,args){
+    execute(message,arg){
         
         if (message.member.hasPermission("ADD_REACTIONS")) {
             const PollEmbed = new Discord.MessageEmbed()

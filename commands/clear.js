@@ -1,7 +1,7 @@
 module.exports = {
     name: "poll",
     description: "to make a poll",
-    execute(message,args){
+    execute(message,arg){
         message.delete();
         if (message.member.hasPermission("BAN_MEMBERS")) {
             if (!arg[1]) {

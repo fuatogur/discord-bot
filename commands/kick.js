@@ -1,7 +1,7 @@
 module.exports = {
         name: 'kick',
         description: 'to kick a member',
-        execute(message,args){
+        execute(message,arg){
             if (message.deletable) message.delete();
             const toKick = message.mentions.members.first();
 
