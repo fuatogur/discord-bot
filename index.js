@@ -66,7 +66,7 @@ bot.on('message', message => {
             bot.commands.get("profile").execute(message)
             break;
         case "poll":
-                bot.commands.ger("poll").execute(message,args)
+                bot.commands.get("poll").execute(message,args)
             break;
         case "ban":
                 bot.commands.get("ban").execute(message, args)
