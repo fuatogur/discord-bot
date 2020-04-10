@@ -2,6 +2,7 @@ module.exports = {
     name: "profile",
     description: "to see your profile",
     execute(message){
+        const Discord = require('discord.js');
         let dateMonth = message.author.createdAt.getMonth();
             let dateYear = message.author.createdAt.getFullYear();
             let dateDay = message.author.createdAt.getDay();
