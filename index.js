@@ -56,13 +56,10 @@ bot.on('message', message => {
     switch (arg[0]) {
         //#region 
         case "clear":
-             bot.commands.get("clear").execute(message,args)
+             bot.commands.get("clear").execute(message,arg)
             break;
         case "instagram":
-            message.channel.send("FuatOgur Instagram Hesabı : fuatogur.php")
-            break;
-        case "themeka-instagram":
-            message.channel.send("Themeka Instagram Hesabı : mhmtbayraktar")
+            message.channel.send("instagram account of owner: fuatogur.php")
             break;
         case "profile":
                 bot.commands.get("profile").execute(message)
