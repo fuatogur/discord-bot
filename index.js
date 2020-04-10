@@ -86,10 +86,20 @@ bot.on('message',  message => {
                 .setColor(0x344ceb)
                 .addField("Kullanıcı Adı", message.author.username, true)
                 .addField("Hesap Kurulma Tarihi", dateDay + "/" + dateMonth + "/" + dateYear, true)
-                .setThumbnail(message.author.avatarURL)
+                .setThumbnail(message.author.displayAvatarURL())
                 .setTimestamp();
 
             message.channel.send(embed);
+            break;
+            case "poll":
+                const PollEmbed = new Discord.MessageEmbed()
+                .setColor(0xffff00)
+                .setTitle("Oylama Menüsü");
+
+                if(!arg[1]){
+                    message.channel.send(PollEmbed)
+                }
+                
             break;
         case "ban":
             if(message.deletable) message.delete();
