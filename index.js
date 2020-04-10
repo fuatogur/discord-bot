@@ -45,8 +45,7 @@ bot.on("ready", () => {
 
 
     bot.user.setActivity('GELİŞTİRİLİYOR \n by Fuat Oğur', { type: 'PLAYING' }).catch(console.error);
-    bot.user.setPresence()
-
+    
    
 })
 
