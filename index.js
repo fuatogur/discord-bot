@@ -22,7 +22,7 @@ const applyText = (canvas, text) => {
 
 bot.on('message', message => {
 
-    if(message.author.bot) return;
+    if (message.author.bot) return;
     let arg = message.content.toLowerCase();
     switch (arg) {
         case "sa":
@@ -33,7 +33,7 @@ bot.on('message', message => {
             break;
         case "nasıl geçti günün":
             message.channel.send("seni hiç alakadar etmez.")
-        break;
+            break;
 
     }
 })
@@ -43,15 +43,15 @@ bot.on('message', message => {
 bot.on("ready", () => {
     console.log(`Hi, ${bot.user.username} is now online!`);
 
-    
-    bot.user.setActivity('GELİŞTİRİLİYOR \n by Fuat Oğur',{type: 'PLAYING'}).catch(console.error);
+
+    bot.user.setActivity('GELİŞTİRİLİYOR \n by Fuat Oğur', { type: 'PLAYING' }).catch(console.error);
     bot.user.setPresence()
 })
 
 
-bot.on('message',  message => {
+bot.on('message', message => {
 
-    if(message.author.bot) return;
+    if (message.author.bot) return;
 
     let arg = message.content.substring(prefix.length).split(" ");
 
@@ -91,127 +91,133 @@ bot.on('message',  message => {
 
             message.channel.send(embed);
             break;
-            case "poll":
-                const PollEmbed = new Discord.MessageEmbed()
-                .setColor(0xffff00)
-                .setTitle("Oylama Menüsü");
+        case "poll":
 
-                if(!arg[1]){
+            if (message.member.hasPermission("ADD_REACTIONS")) {
+                const PollEmbed = new Discord.MessageEmbed()
+                    .setColor(0xffff00)
+                    .setTitle("Oylama Menüsü");
+
+                if (!arg[1]) {
                     message.channel.send(PollEmbed);
                     break;
                 }
-                 let msgArgs = arg.slice(1).join(" ");
+                let msgArgs = arg.slice(1).join(" ");
                 const EmbedPoll = new Discord.MessageEmbed()
-                .setColor(0xffff00)
-                .setTitle("Oylama Menüsü")
-                .addField("Oy",msgArgs);
-               
+                    .setColor(0xffff00)
+                    .setTitle("Oylama Menüsü")
+                    .addField("Oy", msgArgs);
+
                 message.channel.send(EmbedPoll).then(messageReaction => {
                     messageReaction.react("👍");
-                    messageReaction.react("👎")
+                    messageReaction.react("👎");
+                    message.delete(3000).catch(console.error)
                 })
-                
+            }else{
+                if(message.deletable) message.delete()
+            }
+
             break;
         case "ban":
-            if(message.deletable) message.delete();
+            if (message.deletable) message.delete();
             const toBan = message.mentions.members.first();
-            
 
-            
+
+
             if (message.member.hasPermission("BAN_MEMBERS")) {
-                if(message.guild.me.hasPermission("BAN_MEMBERS")){
-                    if(!arg[1]){
+                if (message.guild.me.hasPermission("BAN_MEMBERS")) {
+                    if (!arg[1]) {
                         return message.reply("Lütfen bir kişi belirtin")
-                     }
-                     else{
-                         if(!arg[2]){
-                             return message.reply("Lütfen bir sebep belirtin")
-                         }else{
-                            if(!arg[3]){
+                    }
+                    else {
+                        if (!arg[2]) {
+                            return message.reply("Lütfen bir sebep belirtin")
+                        } else {
+                            if (!arg[3]) {
                                 return message.reply("Lütfen bir süre belirtin")
-                            }else{
-                                if(!toBan){
+                            } else {
+                                if (!toBan) {
                                     return message.reply("Bu kişiyi bulamadım.")
                                 }
-                                else{
-                                   if (!toBan.bannable) {
-                                       return message.reply("Bu kişiyi maaalesef yasaklayamıyorum.")
-                                   }
-                                   else{
-                                       if(toBan.id === message.author.id){
-                                           return message.reply("Kendini yasaklayamazsın.")
-                                       }else{
-                                           /*try {*/
-                                                toBan.ban({ days: arg[3], reason: arg[2] })
-                                                message.channel.send(`${toBan}  adlı kullanıcı ${message.author.username}  tarafından ${arg[2]} sebebiyle sunucudan yasaklandı.`)
-                                          /* } catch (error) {
-                                                message.channel.send("Bir hata oluştu.")
-                                           }
-                                           */
-                                       }
-                                   }
+                                else {
+                                    if (!toBan.bannable) {
+                                        return message.reply("Bu kişiyi maaalesef yasaklayamıyorum.")
+                                    }
+                                    else {
+                                        if (toBan.id === message.author.id) {
+                                            return message.reply("Kendini yasaklayamazsın.")
+                                        } else {
+                                            /*try {*/
+                                            toBan.ban({ days: arg[3], reason: arg[2] })
+                                            message.channel.send(`${toBan}  adlı kullanıcı ${message.author.username}  tarafından ${arg[2]} sebebiyle sunucudan yasaklandı.`)
+                                            /* } catch (error) {
+                                                  message.channel.send("Bir hata oluştu.")
+                                             }
+                                             */
+                                        }
+                                    }
                                 }
                             }
 
-                            
-                         }
-                     }
-                }else{
+
+                        }
+                    }
+                } else {
                     return message.reply("Bunu yapmaya yetkim yok.")
                 }
-               
+
             } else {
                 return message.reply("Bunu yapmaya yetkiniz yok.")
             }
             break;
         case "kick":
-            if(message.deletable) message.delete();
+            if (message.deletable) message.delete();
             const toKick = message.mentions.members.first();
-            
 
-            
+
+
             if (message.member.hasPermission("KICK_MEMBERS")) {
-                if(message.guild.me.hasPermission("KICK_MEMBERS")){
-                    if(!arg[1]){
+                if (message.guild.me.hasPermission("KICK_MEMBERS")) {
+                    if (!arg[1]) {
                         return message.reply("Lütfen bir kişi belirtin")
-                     }
-                     else{
-                         if(!arg[2]){
-                             return message.reply("Lütfen bir sebep belirtin")
-                         }else{
-                             if(!toKick){
-                                 return message.reply("Bu kişiyi bulamadım.")
-                             }
-                             else{
+                    }
+                    else {
+                        if (!arg[2]) {
+                            return message.reply("Lütfen bir sebep belirtin")
+                        } else {
+                            if (!toKick) {
+                                return message.reply("Bu kişiyi bulamadım.")
+                            }
+                            else {
                                 if (!toKick.kickable) {
                                     return message.reply("Bu kişiyi maaalesef atamıyorum.")
                                 }
-                                else{
-                                    if(toKick.id === message.author.id){
+                                else {
+                                    if (toKick.id === message.author.id) {
                                         return message.reply("Kendini atamazsın.")
-                                    }else{
+                                    } else {
                                         try {
-                                            toKick.kick({reason: arg[2]})
+                                            toKick.kick({ reason: arg[2] })
                                             message.channel.send(`${toKick}  adlı kullanıcı ${message.author.username}  tarafından sunucudan atılmıştır.`)
                                         } catch (error) {
                                             message.channel.send("Bir hata oluştu.")
                                         }
-                                        
+
                                     }
                                 }
-                             }
-                         }
-                     }
-                }else{
+                            }
+                        }
+                    }
+                } else {
                     return message.reply("Bunu yapmaya yetkim yok.")
                 }
-               
+
             } else {
                 return message.reply("Bunu yapmaya yetkiniz yok.")
             }
             break;
-            
-            
+
+
 
 
 
