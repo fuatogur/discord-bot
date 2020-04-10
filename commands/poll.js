@@ -21,7 +21,7 @@ module.exports = {
             message.channel.send(EmbedPoll).then(messageReaction => {
                 messageReaction.react("👍");
                 messageReaction.react("👎");
-                message.delete(3000).catch(console.error)
+                message.delete({timeout: 3000}).catch(console.error)
             })
         }else{
             if(message.deletable) message.delete()
