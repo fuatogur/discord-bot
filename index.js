@@ -60,9 +60,7 @@ bot.on('message', message => {
         //#region 
         case "clear":
 
-            if (message.member.roles.cache.find(r => r.name === "Kurucu") ||
-                message.member.roles.cache.find(r => r.name === "Admin") ||
-                message.member.roles.cache.find(r => r.name === "Moderatör")) {
+            if (message.member.hasPermission("ADMINISTRATOR")) {
                 if (!arg[1]) {
                     message.reply("Lütfen sayı belirtin!")
                 } else {
@@ -232,7 +230,7 @@ bot.on('guildMemberAdd', async member => {
         return memberCount;
     }
 
-    const channel = member.guild.channels.cache.find(ch => ch.name === '👋hosgeldin-gorusuruz👋');
+    const channel = member.guild.channels.cache.find(ch => ch.name === 'welcome') || member.guild.channels.cache.find(c => c.name==="👋hosgeldin-gorusuruz👋");
     if (!channel) return;
 
     const canvas = Canvas.createCanvas(700, 250);
@@ -276,7 +274,7 @@ bot.on('guildMemberRemove', member => {
     }
 
 
-    const channel = member.guild.channels.cache.find(ch => ch.name === '👋hosgeldin-gorusuruz👋');
+    const channel = member.guild.channels.cache.find(ch => ch.name === 'welcome') || member.guild.channels.cache.find(c => c.name==="👋hosgeldin-gorusuruz👋");
 
     if (!channel) return;
 
