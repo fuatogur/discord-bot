@@ -104,7 +104,7 @@ bot.on('message',  message => {
                 const EmbedPoll = new Discord.MessageEmbed()
                 .setColor(0xffff00)
                 .setTitle("Oylama Menüsü")
-                .addField(msgArgs);
+                .addField("Oy",msgArgs);
                
                 message.channel.send(EmbedPoll).then(messageReaction => {
                     messageReaction.react("👍");
