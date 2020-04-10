@@ -99,6 +99,8 @@ bot.on('message',  message => {
                 if(!arg[1]){
                     message.channel.send(PollEmbed)
                 }
+                let msgArgs = arg.slice(1).join(" ")
+                message.channel.send(msgArgs)
                 
             break;
         case "ban":
