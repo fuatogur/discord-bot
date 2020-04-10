@@ -64,7 +64,8 @@ bot.on('message', message => {
                 if (!arg[1]) {
                     message.reply("Lütfen sayı belirtin!")
                 } else {
-                    message.channel.bulkDelete(arg[1])
+                    message.delete();
+                    message.channel.bulkDelete(arg[1]);
                     message.channel.send("Son " + arg[1] + " mesaj silindi.")
                 }
             } else {
