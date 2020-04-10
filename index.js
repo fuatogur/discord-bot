@@ -3,21 +3,16 @@ const bot = new Discord.Client();
 const token = 'Njk1OTkzOTE2ODI2MTg5OTg0.XoqBaw.M2xSD_Paeutn-jYZtNcUuzpf3FM';
 const Canvas = require('canvas');
 const prefix = 't!';
-const applyText = (canvas, text) => {
-    const ctx = canvas.getContext('2d');
+const fs = require("fs");
 
-    // Declare a base size of the font
-    let fontSize = 70;
+bot.commands =  new Discord.Collection();
 
-    do {
-        // Assign the font to the context and decrement it so it can be measured again
-        ctx.font = `${fontSize -= 10}px sans-serif`;
-        // Compare pixel width of the text to the canvas minus the approximate avatar size
-    } while (ctx.measureText(text).width > canvas.width - 300);
-
-    // Return the result to use in the actual canvas
-    return ctx.font;
-};
+const commandFiles = fs.readdirSync("./commands/").filter(f => f.endsWith(".js"));
+commandFiles.forEach(file => {
+    const command = require(`./commands/${file}`);
+    
+    bot.commands.set(command.name, command)
+});
 
 
 bot.on('message', message => {
@@ -59,18 +54,7 @@ bot.on('message', message => {
     switch (arg[0]) {
         //#region 
         case "clear":
-                message.delete();
-            if (message.member.hasPermission("BAN_MEMBERS")) {
-                if (!arg[1]) {
-                    message.reply("Lütfen sayı belirtin!")
-                } else {
-                    message.channel.bulkDelete(arg[1]);
-                    message.channel.send("Son " + arg[1] + " mesaj silindi.")
-                }
-            } else {
-                
-                message.channel.send("Böyle bir yetkiniz yok")
-            }
+             bot.commands.get("clear").execute(message,args)
             break;
         case "instagram":
             message.channel.send("FuatOgur Instagram Hesabı : fuatogur.php")
@@ -78,143 +62,17 @@ bot.on('message', message => {
         case "themeka-instagram":
             message.channel.send("Themeka Instagram Hesabı : mhmtbayraktar")
             break;
-        case "profil":
-            let dateMonth = message.author.createdAt.getMonth();
-            let dateYear = message.author.createdAt.getFullYear();
-            let dateDay = message.author.createdAt.getDay();
-            const embed = new Discord.MessageEmbed().setTitle("Kullanıcı Bilgisi")
-                .setColor(0x344ceb)
-                .addField("Kullanıcı Adı", message.author.username, true)
-                .addField("Hesap Kurulma Tarihi", dateDay + "/" + dateMonth + "/" + dateYear, true)
-                .setThumbnail(message.author.displayAvatarURL())
-                .setTimestamp();
-
-            message.channel.send(embed);
+        case "profile":
+            bot.commands.get("profile").execute(message)
             break;
         case "poll":
-
-            if (message.member.hasPermission("ADD_REACTIONS")) {
-                const PollEmbed = new Discord.MessageEmbed()
-                    .setColor(0xffff00)
-                    .setTitle("Oylama Menüsü");
-
-                if (!arg[1]) {
-                    message.channel.send(PollEmbed);
-                    break;
-                }
-                let msgArgs = arg.slice(1).join(" ");
-                const EmbedPoll = new Discord.MessageEmbed()
-                    .setColor(0xffff00)
-                    .setTitle("Oylama Menüsü")
-                    .addField("Oy", msgArgs);
-
-                message.channel.send(EmbedPoll).then(messageReaction => {
-                    messageReaction.react("👍");
-                    messageReaction.react("👎");
-                    message.delete(3000).catch(console.error)
-                })
-            }else{
-                if(message.deletable) message.delete()
-            }
-
+                bot.commands.ger("poll").execute(message,args)
             break;
         case "ban":
-            if (message.deletable) message.delete();
-            const toBan = message.mentions.members.first();
-
-
-
-            if (message.member.hasPermission("BAN_MEMBERS")) {
-                if (message.guild.me.hasPermission("BAN_MEMBERS")) {
-                    if (!arg[1]) {
-                        return message.reply("Lütfen bir kişi belirtin")
-                    }
-                    else {
-                        if (!arg[2]) {
-                            return message.reply("Lütfen bir sebep belirtin")
-                        } else {
-                            if (!arg[3]) {
-                                return message.reply("Lütfen bir süre belirtin")
-                            } else {
-                                if (!toBan) {
-                                    return message.reply("Bu kişiyi bulamadım.")
-                                }
-                                else {
-                                    if (!toBan.bannable) {
-                                        return message.reply("Bu kişiyi maaalesef yasaklayamıyorum.")
-                                    }
-                                    else {
-                                        if (toBan.id === message.author.id) {
-                                            return message.reply("Kendini yasaklayamazsın.")
-                                        } else {
-                                            /*try {*/
-                                            toBan.ban({ days: arg[3], reason: arg[2] })
-                                            message.channel.send(`${toBan}  adlı kullanıcı ${message.author.username}  tarafından ${arg[2]} sebebiyle sunucudan yasaklandı.`)
-                                            /* } catch (error) {
-                                                  message.channel.send("Bir hata oluştu.")
-                                             }
-                                             */
-                                        }
-                                    }
-                                }
-                            }
-
-
-                        }
-                    }
-                } else {
-                    return message.reply("Bunu yapmaya yetkim yok.")
-                }
-
-            } else {
-                return message.reply("Bunu yapmaya yetkiniz yok.")
-            }
+                bot.commands.get("ban").execute(message, args)
             break;
         case "kick":
-            if (message.deletable) message.delete();
-            const toKick = message.mentions.members.first();
-
-
-
-            if (message.member.hasPermission("KICK_MEMBERS")) {
-                if (message.guild.me.hasPermission("KICK_MEMBERS")) {
-                    if (!arg[1]) {
-                        return message.reply("Lütfen bir kişi belirtin")
-                    }
-                    else {
-                        if (!arg[2]) {
-                            return message.reply("Lütfen bir sebep belirtin")
-                        } else {
-                            if (!toKick) {
-                                return message.reply("Bu kişiyi bulamadım.")
-                            }
-                            else {
-                                if (!toKick.kickable) {
-                                    return message.reply("Bu kişiyi maaalesef atamıyorum.")
-                                }
-                                else {
-                                    if (toKick.id === message.author.id) {
-                                        return message.reply("Kendini atamazsın.")
-                                    } else {
-                                        try {
-                                            toKick.kick({ reason: arg[2] })
-                                            message.channel.send(`${toKick}  adlı kullanıcı ${message.author.username}  tarafından sunucudan atılmıştır.`)
-                                        } catch (error) {
-                                            message.channel.send("Bir hata oluştu.")
-                                        }
-
-                                    }
-                                }
-                            }
-                        }
-                    }
-                } else {
-                    return message.reply("Bunu yapmaya yetkim yok.")
-                }
-
-            } else {
-                return message.reply("Bunu yapmaya yetkiniz yok.")
-            }
+                bot.commands.get("kick").execute(message, args)
             break;
     //#endregion
 
@@ -229,6 +87,22 @@ bot.on('guildMemberAdd', async member => {
         var memberCount = member.memberCount;
         return memberCount;
     }
+
+    const applyText = (canvas, text) => {
+        const ctx = canvas.getContext('2d');
+    
+        // Declare a base size of the font
+        let fontSize = 70;
+    
+        do {
+            // Assign the font to the context and decrement it so it can be measured again
+            ctx.font = `${fontSize -= 10}px sans-serif`;
+            // Compare pixel width of the text to the canvas minus the approximate avatar size
+        } while (ctx.measureText(text).width > canvas.width - 300);
+    
+        // Return the result to use in the actual canvas
+        return ctx.font;
+    };
 
     const channel = member.guild.channels.cache.find(ch => ch.name === 'welcome') || member.guild.channels.cache.find(c => c.name==="👋hosgeldin-gorusuruz👋");
     if (!channel) return;
