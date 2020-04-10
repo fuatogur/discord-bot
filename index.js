@@ -265,7 +265,7 @@ bot.on('guildMemberAdd', async member => {
     const attachment = new Discord.MessageAttachment(canvas.toBuffer(), 'welcome-image.png');
     channel.send(`Sunucuya hoş geldin, ${member}` + "Sunucumuzda şu anda " + memberCounter() + " üye var.");
     channel.send(attachment);
-    memberChannel();
+    
 
 });
 bot.on('guildMemberRemove', member => {
