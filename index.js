@@ -46,6 +46,12 @@ bot.on("ready", () => {
 
     bot.user.setActivity('GELİŞTİRİLİYOR \n by Fuat Oğur', { type: 'PLAYING' }).catch(console.error);
     bot.user.setPresence()
+
+    var testChannel = bot.channels.cache.find(c => c.id==="668864138642194442")
+
+    setInterval(() => {
+        testChannel.send("Sa arkadaşlar naber")
+    }, 3600000);
 })
 
 
