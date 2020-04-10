@@ -2,7 +2,7 @@ module.exports = {
     name: "poll",
     description: "to make a poll",
     execute(message,arg){
-        
+        const Discord = require("discord.js")
         if (message.member.hasPermission("ADD_REACTIONS")) {
             const PollEmbed = new Discord.MessageEmbed()
                 .setColor(0xffff00)
