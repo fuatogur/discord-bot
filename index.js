@@ -59,17 +59,16 @@ bot.on('message', message => {
     switch (arg[0]) {
         //#region 
         case "clear":
-
-            if (message.member.hasPermission("ADMINISTRATOR")) {
+                message.delete();
+            if (message.member.hasPermission("BAN_MEMBERS")) {
                 if (!arg[1]) {
                     message.reply("Lütfen sayı belirtin!")
                 } else {
-                    message.delete();
                     message.channel.bulkDelete(arg[1]);
                     message.channel.send("Son " + arg[1] + " mesaj silindi.")
                 }
             } else {
-                message.delete();
+                
                 message.channel.send("Böyle bir yetkiniz yok")
             }
             break;
