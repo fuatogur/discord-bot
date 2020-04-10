@@ -3,6 +3,7 @@ const bot = new Discord.Client();
 const token = 'Njk1OTkzOTE2ODI2MTg5OTg0.XoqBaw.M2xSD_Paeutn-jYZtNcUuzpf3FM';
 const Canvas = require('canvas');
 const prefix = 't!';
+const ytdl = require('ytdl-core-discord');
 const applyText = (canvas, text) => {
     const ctx = canvas.getContext('2d');
 
@@ -58,6 +59,7 @@ bot.on('message', message => {
     let arg = message.content.substring(prefix.length).split(" ");
 
     switch (arg[0]) {
+        //#region 
         case "clear":
 
             if (message.member.roles.cache.find(r => r.name === "Kurucu") ||
@@ -218,12 +220,10 @@ bot.on('message', message => {
                 return message.reply("Bunu yapmaya yetkiniz yok.")
             }
             break;
-
-
-
-
+    //#endregion
 
     }
+    
 });
 
 
