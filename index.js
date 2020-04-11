@@ -61,7 +61,7 @@ bot.on('message', message => {
              bot.commands.get("clear").execute(message,arg)
             break;
         case "instagram":
-            message.channel.send("Themeka instagram : `mhmtbayraktar`")
+            bot.commands.get("instagram").run(bot,message,arg)
             break;
         case "profile":
                 bot.commands.get("profile").execute(message)
