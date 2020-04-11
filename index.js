@@ -54,7 +54,9 @@ bot.on('message', message => {
     let arg = message.content.substring(prefix.length).split(" ");
 
     switch (arg[0]) {
-        //#region 
+        case "ping":
+            bot.commands.get("ping").run(bot,message,args)
+            break;
         case "clear":
              bot.commands.get("clear").execute(message,arg)
             break;
@@ -73,7 +75,7 @@ bot.on('message', message => {
         case "kick":
                 bot.commands.get("kick").execute(message, arg)
             break;
-    //#endregion
+    
 
     }
     

@@ -4,7 +4,7 @@ module.exports = {
         execute(message,arg){
             if (message.deletable) message.delete();
             const toKick = message.mentions.members.first();
-            
+            const prefix = "!t"
 
 
 
