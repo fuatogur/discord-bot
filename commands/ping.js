@@ -5,7 +5,7 @@ module.exports = {
         const msg = await message.channel.send(`🏓 Hesaplanıyor....`);
 
         msg.edit(`🏓 Pong!
-        Gecikme : ${Math.floor(msg.createdTimestap - message.createdTimestap)}ms
-        API Gecikme : ${Math.round(bot.ping)}ms`);
+        Gecikme : ${Math.floor(msg.ws.createdTimestap - message.ws.createdTimestap)}ms
+        API Gecikme : ${Math.round(bot.ws.ping)}ms`);
     }
 }
