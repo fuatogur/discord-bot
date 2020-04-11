@@ -54,14 +54,12 @@ bot.on('message', message => {
     let arg = message.content.substring(prefix.length).split(" ");
 
     switch (arg[0]) {
-        case "ping":
-            bot.commands.get("ping").run(bot,message,arg)
-            break;
+        
         case "clear":
              bot.commands.get("clear").execute(message,arg)
             break;
         case "instagram":
-            bot.commands.get("instagram").run(bot,message,arg)
+            message.channel.send("Themeka instagram : `mhmtbayraktar`")
             break;
         case "profile":
                 bot.commands.get("profile").execute(message)
