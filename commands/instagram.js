@@ -1,15 +1,10 @@
-const { RichEmbed } = require("discord.js");
-const { stripIndents } = require("common-tags");
-
+const Discord = require('discord.js');
 const fetch = require("node-fetch");
 
 module.exports = {
     name: "instagram",
-    aliases: ["insta"],
-    category: "info",
-    description: "Find out some nice instagram statistics",
-    usage: "<name>",
-    run: async (client, message, args) => {
+    description: "to look instagram stats",
+    run: async (bot, message, args) => {
         const name = args.join(" ");
 
         if (!name) {
@@ -24,13 +19,13 @@ module.exports = {
         try {
             res = await fetch(url).then(url => url.json());
         } catch (e) {
-            return message.reply("I couldn't find that account... :(")
-                .then(m => m.delete(5000));
+            return message.reply("Bu hesabı bulamadım :(")
+                .then(m => m.delete({timeout: 5000}));
         }
 
         const account = res.graphql.user;
 
-        const embed = new RichEmbed()
+        const embed = new Discord.MessageEmbed()
             .setColor("RANDOM")
             .setTitle(account.full_name)
             .setURL(`https://instagram.com/${name}`)
