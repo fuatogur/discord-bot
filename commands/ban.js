@@ -4,20 +4,21 @@ module.exports = {
     execute(message,arg){
         if (message.deletable) message.delete();
             const toBan = message.mentions.members.first();
+            const prefix = 't!';
 
 
 
             if (message.member.hasPermission("BAN_MEMBERS")) {
                 if (message.guild.me.hasPermission("BAN_MEMBERS")) {
                     if (!arg[1]) {
-                        return message.reply("Lütfen bir kişi belirtin")
+                        return message.reply(`Lütfen belirtilen şekilde kullanın \`${prefix}ban @isim sebep süre\` `)
                     }
                     else {
                         if (!arg[2]) {
-                            return message.reply("Lütfen bir sebep belirtin")
+                            return message.reply(`Lütfen belirtilen şekilde kullanın \`${prefix}ban @isim sebep süre\` `)
                         } else {
                             if (!arg[3]) {
-                                return message.reply("Lütfen bir süre belirtin")
+                                return message.reply(`Lütfen belirtilen şekilde kullanın \`${prefix}ban @isim sebep süre\` `)
                             } else {
                                 if (!toBan) {
                                     return message.reply("Bu kişiyi bulamadım.")
@@ -32,7 +33,7 @@ module.exports = {
                                         } else {
                                             /*try {*/
                                             toBan.ban({ days: arg[3], reason: arg[2] })
-                                            message.channel.send(`${toBan}  adlı kullanıcı ${message.author.username}  tarafından ${arg[2]} sebebiyle sunucudan yasaklandı.`)
+                                            message.channel.send(`${toBan}  adlı kullanıcı \`${message.author.username}\`  tarafından \`${arg[2]}\` sebebiyle sunucudan yasaklandı.`)
                                             /* } catch (error) {
                                                   message.channel.send("Bir hata oluştu.")
                                              }

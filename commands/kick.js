@@ -4,17 +4,18 @@ module.exports = {
         execute(message,arg){
             if (message.deletable) message.delete();
             const toKick = message.mentions.members.first();
+            
 
 
 
             if (message.member.hasPermission("KICK_MEMBERS")) {
                 if (message.guild.me.hasPermission("KICK_MEMBERS")) {
                     if (!arg[1]) {
-                        return message.reply("Lütfen bir kişi belirtin")
+                        return message.reply(`Lütfen belirtilen şekilde kullanın \`${prefix}kick @isim sebep \` `)
                     }
                     else {
                         if (!arg[2]) {
-                            return message.reply("Lütfen bir sebep belirtin")
+                            return message.reply(`Lütfen belirtilen şekilde kullanın \`${prefix}kick @isim sebep \` `)
                         } else {
                             if (!toKick) {
                                 return message.reply("Bu kişiyi bulamadım.")
@@ -29,7 +30,7 @@ module.exports = {
                                     } else {
                                         try {
                                             toKick.kick({ reason: arg[2] })
-                                            message.channel.send(`${toKick}  adlı kullanıcı ${message.author.username}  tarafından sunucudan atılmıştır.`)
+                                            message.channel.send(`${toKick}  adlı kullanıcı \`${message.author.username}\`  tarafından sunucudan atılmıştır.`)
                                         } catch (error) {
                                             message.channel.send("Bir hata oluştu.")
                                         }

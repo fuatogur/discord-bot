@@ -59,7 +59,7 @@ bot.on('message', message => {
              bot.commands.get("clear").execute(message,arg)
             break;
         case "instagram":
-            message.channel.send("instagram account of owner: fuatogur.php")
+            message.channel.send("Themeka instagram : `mhmtbayraktar`")
             break;
         case "profile":
                 bot.commands.get("profile").execute(message)
