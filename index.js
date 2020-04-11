@@ -55,7 +55,7 @@ bot.on('message', message => {
 
     switch (arg[0]) {
         case "ping":
-            bot.commands.get("ping").run(bot,message,args)
+            bot.commands.get("ping").run(bot,message,arg)
             break;
         case "clear":
              bot.commands.get("clear").execute(message,arg)
