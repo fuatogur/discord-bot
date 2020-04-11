@@ -19,6 +19,7 @@ module.exports = {
         try {
             res = await fetch(url).then(url => url.json());
         } catch (e) {
+            message.channel.send(res)
             return message.reply("Bu hesabı bulamadım :(")
                 .then(m => m.delete({timeout: 5000}));
         }
