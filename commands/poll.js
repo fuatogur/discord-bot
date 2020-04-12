@@ -14,7 +14,7 @@ module.exports = {
             }
             let msgArgs = arg.slice(1).join(" ");
             const EmbedPoll = new Discord.MessageEmbed()
-                .setColor(0xffff00)
+                .setColor("RANDOM")
                 .setTitle("Oylama Menüsü")
                 .addField("Oy", msgArgs);
 

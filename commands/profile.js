@@ -7,7 +7,7 @@ module.exports = {
             let dateYear = message.author.createdAt.getFullYear();
             let dateDay = message.author.createdAt.getDay();
             const embed = new Discord.MessageEmbed().setTitle("Kullanıcı Bilgisi")
-                .setColor(0x344ceb)
+                .setColor("RANDOM")
                 .addField("Kullanıcı Adı", message.author.username, true)
                 .addField("Hesap Kurulma Tarihi", dateDay + "/" + dateMonth + "/" + dateYear, true)
                 .setThumbnail(message.author.displayAvatarURL())
