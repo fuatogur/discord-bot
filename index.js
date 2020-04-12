@@ -4,12 +4,10 @@ const token = 'Njk1OTkzOTE2ODI2MTg5OTg0.XoqBaw.M2xSD_Paeutn-jYZtNcUuzpf3FM';
 const Canvas = require('canvas');
 const prefix = 't!';
 const fs = require("fs");
-
-Discord
-
 bot.commands =  new Discord.Collection();
-
 const commandFiles = fs.readdirSync("./commands/").filter(f => f.endsWith(".js"));
+const ytdl = require("ytdl-core");
+const servers = {};
 commandFiles.forEach(file => {
     const command = require(`./commands/${file}`);
     
@@ -77,7 +75,7 @@ bot.on('message', message => {
 
     //MUSIC BOT COMMANDS
         case "play":
-            bot.commands.get("play").run(message,arg)
+            bot.commands.get("play").run(servers,message,arg)
             break;
         
     
