@@ -22,7 +22,7 @@ module.exports = {
 
         if (!arg[1]) return message.channel.send("Lütfen link veya anahtar sözcük/sözcükler girin.");
 
-        if(!message.member.voiceChannel){
+        if(!message.member.voice.channel){
             message.channel.send("Bir sesli sohbet kanalında bulunmanız gerekir.");
             return;
         }
@@ -35,7 +35,7 @@ module.exports = {
 
         server.queue.push(arg[1]);
 
-        if(!message.guild.voiceConnection) message.member.voiceChannel.join().then(function(connection){
+        if(!message.guild.voice.connection) message.member.voice.channel.join().then(function(connection){
             play(connection,message);
         })
         
