@@ -4,8 +4,7 @@ module.exports = {
     run: async (servers,message,arg) => {
         const ytdl = require("ytdl-core");
         function play(connection,message) {
-            var server = servers[message.guild.id];
-            
+            var server = servers[message.guild.id];    
             server.dispatcher =  connection.play(ytdl(server.queue[0],{filter: "audioonly"}));
 
             server.queue.shift();
