@@ -111,7 +111,7 @@ bot.on('guildMemberAdd', async member => {
     const ctx = canvas.getContext('2d');
 
     const background = await Canvas.loadImage('./arkaplan.jpg');
-    ctx.drawImage(background, 50, 50, canvas.width, canvas.height);
+    ctx.drawImage(background, 0, 0, canvas.width+50, canvas.height+50);
 
     ctx.strokeStyle = '#74037b';
     ctx.strokeRect(0, 0, canvas.width, canvas.height);
