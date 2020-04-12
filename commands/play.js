@@ -22,7 +22,10 @@ module.exports = {
 
         if (!arg[1]) return message.channel.send("Lütfen link veya anahtar sözcük/sözcükler girin.");
 
-        if(!message.member.voiceChannel) return message.channel.send("Bir sesli sohbet kanalında bulunmanız gerekir.")
+        if(!message.member.voiceChannel){
+            message.channel.send("Bir sesli sohbet kanalında bulunmanız gerekir.");
+            return;
+        }
 
         if(!servers[message.guild.id]) servers[message.guild.id] = {
             queue:[]
