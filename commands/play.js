@@ -3,10 +3,10 @@ module.exports = {
     description: 'play a songr',
     run: async (servers,message,arg) => {
         const ytdl = require("ytdl-core");
-        async function play(connection,message) {
+        function play(connection,message) {
             var server = servers[message.guild.id];
 
-            server.dispatcher = await connection.play(ytdl(server.queue[0],{filter: "audioonly"})).catch();
+            server.dispatcher =  connection.play(ytdl(server.queue[0],{filter: "audioonly"}));
 
             server.queue.shift();
             
