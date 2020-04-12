@@ -74,9 +74,9 @@ bot.on('message', message => {
             break;
 
     //MUSIC BOT COMMANDS
-        case "play":
-            bot.commands.get("play").run(servers,message,arg)
-            break;
+     //   case "play":
+    //        bot.commands.get("play").run(servers,message,arg)
+    //        break;
         
     
 
