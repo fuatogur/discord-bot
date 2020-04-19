@@ -17,28 +17,25 @@ module.exports = {
                         if (!arg[2]) {
                             return message.reply(`Lütfen belirtilen şekilde kullanın \`${prefix}ban @isim sebep süre\` `)
                         } else {
-                            if (!arg[3]) {
-                                return message.reply(`Lütfen belirtilen şekilde kullanın \`${prefix}ban @isim sebep süre\` `)
-                            } else {
-                                if (!toBan) {
-                                    return message.reply("Bu kişiyi bulamadım.")
+                            
+                            if (!toBan) {
+                                return message.reply("Bu kişiyi bulamadım.")
+                            }
+                            else {
+                                if (!toBan.bannable) {
+                                    return message.reply("Bu kişiyi maaalesef yasaklayamıyorum.")
                                 }
                                 else {
-                                    if (!toBan.bannable) {
-                                        return message.reply("Bu kişiyi maaalesef yasaklayamıyorum.")
-                                    }
-                                    else {
-                                        if (toBan.id === message.author.id) {
-                                            return message.reply("Kendini yasaklayamazsın.")
-                                        } else {
-                                            /*try {*/
-                                            toBan.ban({ days: arg[3], reason: arg[2] })
-                                            message.channel.send(`${toBan}  adlı kullanıcı \`${message.author.username}\`  tarafından \`${arg[2]}\` sebebiyle sunucudan yasaklandı.`)
-                                            /* } catch (error) {
-                                                  message.channel.send("Bir hata oluştu.")
-                                             }
-                                             */
-                                        }
+                                    if (toBan.id === message.author.id) {
+                                        return message.reply("Kendini yasaklayamazsın.")
+                                    } else {
+                                        /*try {*/
+                                        toBan.ban({reason: arg[2] })
+                                        message.channel.send(`${toBan}  adlı kullanıcı \`${message.author.username}\`  tarafından \`${arg[2]}\` sebebiyle sunucudan yasaklandı.`)
+                                        /* } catch (error) {
+                                              message.channel.send("Bir hata oluştu.")
+                                         }
+                                         */
                                     }
                                 }
                             }
