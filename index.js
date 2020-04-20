@@ -157,7 +157,7 @@ bot.on('guildMemberRemove', member => {
 
     if (!channel) return;
 
-    channel.send(`${member}, Sunucumuzdan ayrıldı.**300** Kişi Olmamıza \`${300-memberCounter()}\` Kişi Kaldı \`${memberCounter()}\` Kişiyiz! `);
+    channel.send(`${member.user.username}, Sunucumuzdan ayrıldı.**300** Kişi Olmamıza \`${300-memberCounter()}\` Kişi Kaldı \`${memberCounter()}\` Kişiyiz! `);
      
 
 });
