@@ -41,9 +41,9 @@ bot.on("ready", () => {
 
 
     bot.user.setActivity('GELİŞTİRİLİYOR \n by Fuat Oğur', { type: 'PLAYING' }).catch(console.error);
-    const guild = bot.guilds.get("587315116433997824");
+    /*const guild = bot.guilds.get("587315116433997824");
     const role = guild.roles.find("name", "⚡𝐔̈𝐲𝐞⚡");
-    guild.members.filter(m => !m.user.bot).forEach(member => member.addRole(role))
+    guild.members.filter(m => !m.user.bot).forEach(member => member.addRole(role))*/
 
     
    
