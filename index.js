@@ -57,8 +57,8 @@ bot.on('message', message => {
     
 
 
-           
         
+        switch(arg[0]){
         case "clear":
              bot.commands.get("clear").execute(message,arg)
             break;
@@ -77,7 +77,7 @@ bot.on('message', message => {
         case "kick":
                 bot.commands.get("kick").execute(message, arg)
             break;
-
+        }
     //MUSIC BOT COMMANDS
      //   case "play":
     //        bot.commands.get("play").run(servers,message,arg)
@@ -85,7 +85,7 @@ bot.on('message', message => {
         
     
 
-    }
+    
     
 });
 
