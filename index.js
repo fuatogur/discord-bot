@@ -57,9 +57,7 @@ bot.on('message', message => {
     
 
 
-message.guild.members.cache.filter(m => !m.user.bot).forEach(member => member.roles.add(role))
-message.channel.send(`**${message.author.username}**,  **${role.name}** rolü herkese eklendi. `)
-            break;
+           
         
         case "clear":
              bot.commands.get("clear").execute(message,arg)
