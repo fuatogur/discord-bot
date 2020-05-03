@@ -41,9 +41,7 @@ bot.on("ready", () => {
 
 
     bot.user.setActivity('GELİŞTİRİLİYOR \n by Fuat Oğur', { type: 'PLAYING' }).catch(console.error);
-    const guild = bot.guilds.cache.get("587315116433997824");
-    const role = guild.roles.cache.get("706603102501077002"); 
-    guild.members.cache.filter(m => !m.user.bot).forEach(member => member.addRole(role)) 
+    
 
     
    
@@ -57,6 +55,13 @@ bot.on('message', message => {
     let arg = message.content.substring(prefix.length).split(" ");
 
     switch (arg[0]) {
+        case "rolver":
+            let role = message.guild.roles.cache.get("706603102501077002")
+
+
+message.guild.members.filter(m => !m.user.bot).forEach(member => member.addRole(role))
+message.channel.send(`**${message.author.username}**,  **${role.name}** rolü herkese eklendi. `)
+            break;
         
         case "clear":
              bot.commands.get("clear").execute(message,arg)
