@@ -87,7 +87,7 @@ bot.on('message', message => {
 
 bot.on('guildMemberAdd', async member => {
     function memberCounter() {
-        var member = bot.guilds.cache.get('405654512963944448');
+        var member = bot.guilds.cache.get('587315116433997824');
         var memberCount = member.memberCount;
         return memberCount;
     }
@@ -139,7 +139,7 @@ bot.on('guildMemberAdd', async member => {
     ctx.drawImage(avatar, 25, 25, 200, 200);
 
     const attachment = new Discord.MessageAttachment(canvas.toBuffer(), 'welcome-image.png');
-    channel.send(` 📢 Kullanıcı Katıldı! **300** Kişi Olmamıza \`${300-memberCounter()}\` Kişi Kaldı \`${memberCounter()}\` Kişiyiz! ✔️ ${member}`);
+    channel.send(` 📢 Kullanıcı Katıldı! **1000** Kişi Olmamıza \`${1000-memberCounter()}\` Kişi Kaldı \`${memberCounter()}\` Kişiyiz! ✔️ ${member}`);
     
     channel.send(attachment);
     
@@ -147,7 +147,7 @@ bot.on('guildMemberAdd', async member => {
 });
 bot.on('guildMemberRemove', member => {
     function memberCounter() {
-        var member = bot.guilds.cache.get('405654512963944448');
+        var member = bot.guilds.cache.get('587315116433997824');
         var memberCount = member.memberCount;
         return memberCount;
     }
@@ -157,7 +157,7 @@ bot.on('guildMemberRemove', member => {
 
     if (!channel) return;
 
-    channel.send(`${member.user.username}, Sunucumuzdan ayrıldı.**300** Kişi Olmamıza \`${300-memberCounter()}\` Kişi Kaldı \`${memberCounter()}\` Kişiyiz! `);
+    channel.send(`${member.user.username}, Sunucumuzdan ayrıldı.**1000** Kişi Olmamıza \`${1000-memberCounter()}\` Kişi Kaldı \`${memberCounter()}\` Kişiyiz! `);
      
 
 });
