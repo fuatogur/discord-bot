@@ -107,7 +107,7 @@ bot.on('message', message => {
 });
 
 
-bot.on('guildMemberAdd', async member => {
+bot.on('guildMemberAdd', member => {
     function memberCounter() {
         var member = bot.guilds.cache.get('587315116433997824');
         var memberCount = member.memberCount;
