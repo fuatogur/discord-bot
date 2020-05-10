@@ -105,9 +105,9 @@ bot.on('message', message => {
                 message.guild.fetchInvites().then(guildInvites => {
             
                     // This is the *existing* invites for the guild.
-                    var ei = invites[member.guild.id];
+                    var ei = invites[message.guild.id];
                     // Update the cached invites for the guild.
-                    invites[member.guild.id] = guildInvites;
+                    invites[message.guild.id] = guildInvites;
                     // Look through the invites, find the one for which the uses went up.
                     var invite = guildInvites.find(i => ei.get(i.code).uses < i.uses);
                     // This is just to simplify the message being sent below (inviter doesn't have a tag property)
