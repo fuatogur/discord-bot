@@ -108,11 +108,7 @@ bot.on('message', message => {
 
 
 bot.on('guildMemberAdd', async member => {
-    function memberCounter() {
-        var member = bot.guilds.cache.get('587315116433997824');
-        var memberCount = member.memberCount;
-        return memberCount;
-    }
+    
 
     const applyText = (canvas, text) => {
         const ctx = canvas.getContext('2d');
@@ -162,6 +158,11 @@ bot.on('guildMemberAdd', async member => {
 
     
 member.guild.fetchInvites().then(guildInvites => {
+    function memberCounter() {
+        var member = bot.guilds.cache.get('587315116433997824');
+        var memberCount = member.memberCount;
+        return memberCount;
+    }
         // This is the *existing* invites for the guild.
         var ei = invites[member.guild.id];
         // Update the cached invites for the guild.
