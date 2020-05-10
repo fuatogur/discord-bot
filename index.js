@@ -169,7 +169,7 @@ bot.on('guildMemberAdd', async member => {
         // Look through the invites, find the one for which the uses went up.
         var invite = guildInvites.find(i => ei.get(i.code).uses < i.uses);
         // This is just to simplify the message being sent below (inviter doesn't have a tag property)
-        var inviter = client.users.get(invite.inviter.id);
+        var inviter = bot.users.get(invite.inviter.id);
         // Get the log channel (change to your liking)
         var logChannel = member.guild.channels.find(channel => channel.name === "join-logs");
         // A real basic message with the information we need. 
