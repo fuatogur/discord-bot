@@ -173,7 +173,7 @@ bot.on('guildMemberAdd', async member => {
         // Get the log channel (change to your liking)
         var logChannel = member.guild.channels.find(channel => channel.name === "join-logs");
         // A real basic message with the information we need. 
-        logChannel.send(`${member.user.tag} joined using invite code ${invite.code} from ${inviter.tag}. Invite was used ${invite.uses} times since its creation.`);
+        //logChannel.send(`${member.user.tag} joined using invite code ${invite.code} from ${inviter.tag}. Invite was used ${invite.uses} times since its creation.`);
       }).catch();
     channel.send(` ${member}, ${inviter.tag} tarafından sunucuya katıldı. 📢 **1000** Kişi Olmamıza \`${1000-memberCounter()}\` Kişi Kaldı \`${memberCounter()}\` Kişiyiz! ✔️ `);
     
