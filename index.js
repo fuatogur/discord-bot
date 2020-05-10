@@ -160,8 +160,8 @@ bot.on('guildMemberAdd', async member => {
     const avatar = await Canvas.loadImage(member.user.displayAvatarURL({ format: 'jpg' }));
     ctx.drawImage(avatar, 25, 25, 200, 200);
 
-    const attachment = new Discord.MessageAttachment(canvas.toBuffer(), 'welcome-image.png');
-    member.guild.fetchInvites().then(guildInvites => {
+    
+member.guild.fetchInvites().then(guildInvites => {
         // This is the *existing* invites for the guild.
         var ei = invites[member.guild.id];
         // Update the cached invites for the guild.
@@ -171,13 +171,16 @@ bot.on('guildMemberAdd', async member => {
         // This is just to simplify the message being sent below (inviter doesn't have a tag property)
         var inviter = bot.users.cache.get(invite.inviter.id);
         // Get the log channel (change to your liking)
-        var logChannel = member.guild.channels.find(channel => channel.name === "join-logs");
+        var logChannel = member.guild.channels.cache.find(channel => channel.name === "👋hosgeldin-gorusuruz👋");
+        logChannel.send(` ${member}, ${inviter.tag} tarafından sunucuya katıldı. 📢 **1000** Kişi Olmamıza \`${1000-memberCounter()}\` Kişi Kaldı \`${memberCounter()}\` Kişiyiz! ✔️ `);
         // A real basic message with the information we need. 
         //logChannel.send(`${member.user.tag} joined using invite code ${invite.code} from ${inviter.tag}. Invite was used ${invite.uses} times since its creation.`);
       }).catch();
-    channel.send(` ${member}, ${inviter.tag} tarafından sunucuya katıldı. 📢 **1000** Kişi Olmamıza \`${1000-memberCounter()}\` Kişi Kaldı \`${memberCounter()}\` Kişiyiz! ✔️ `);
-    
+    const attachment = new Discord.MessageAttachment(canvas.toBuffer(), 'welcome-image.png');
     channel.send(attachment);
+    
+    
+    
     
 
 });
