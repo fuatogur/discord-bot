@@ -3,7 +3,8 @@ module.exports = {
     description: "to see how many players you are invited",
     execute(message,arg){
     
-    
+        const Discord = require('discord.js');
+        const bot = new Discord.Client();
         // Initialize the invite cache
 const invites = {};
 
@@ -36,7 +37,7 @@ bot.on('ready', () => {
                 //logChannel.send(` ${member}, ${inviter} tarafından sunucuya katıldı. 📢 **1000** Kişi Olmamıza \`${1000-memberCounter()}\` Kişi Kaldı \`${memberCounter()}\` Kişiyiz!. ${invite.uses} davet `);
                 // A real basic message with the information we need. 
                 //logChannel.send(`${member.user.tag} joined using invite code ${invite.code} from ${inviter.tag}. Invite was used ${invite.uses} times since its creation.`);
-                const Discord = require('discord.js');
+                
                 const embed = new Discord.MessageEmbed().setTitle("Kullanıcı Bilgisi")
                 .setColor("RANDOM")
                 .addField("Kullanıcı Adı", message.author.username, true)
