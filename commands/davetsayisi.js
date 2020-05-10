@@ -22,7 +22,7 @@ bot.on('ready', () => {
     });
   });
 });
-        member.guild.fetchInvites().then(guildInvites => {
+        message.guild.fetchInvites().then(guildInvites => {
             
                 // This is the *existing* invites for the guild.
                 var ei = invites[member.guild.id];
