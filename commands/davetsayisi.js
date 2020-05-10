@@ -2,7 +2,7 @@ module.exports = {
     name: "davetsayisi",
     description: "to see how many players you are invited",
     execute(message,arg){
-    var ch = member.guild.channels.cache.find(channel => channel.name === "davet-et-kazan");
+    var ch = message.guild.channels.cache.find(ch => ch.name="davet-et-kazan")
 
     if (!ch) {
         return;

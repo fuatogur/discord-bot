@@ -77,6 +77,7 @@ bot.on('message', message => {
         
         switch(arg[0]){
         case "clear":
+            
              bot.commands.get("clear").execute(message,arg)
             break;
         case "instagram":
