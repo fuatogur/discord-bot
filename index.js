@@ -57,7 +57,7 @@ bot.on("ready", () => {
     console.log(`Hi, ${bot.user.username} is now online!`);
 
 
-    bot.user.setActivity('GELİŞTİRİLİYOR \n by Fuat Oğur', { type: 'PLAYING' }).catch(console.error);
+    bot.user.setActivity('TheMeka Resmi Sunucu botu', { type: 'PLAYING' }).catch(console.error);
 
     const loginChannel = bot.channels.cache.get("709032116175896628");
     if (!loginChannel){
