@@ -163,9 +163,8 @@ bot.on('guildMemberAdd', async member => {
 
     const avatar = await Canvas.loadImage(member.user.displayAvatarURL({ format: 'jpg' }));
     ctx.drawImage(avatar, 25, 25, 200, 200);
-    channel.send(`${member.user.username}, Sunucumuzdan ayrıldı.**1500** Kişi Olmamıza \`${1500-memberCounter()}\` Kişi Kaldı \`${memberCounter()}\` Kişiyiz! `);
 
-    
+
 member.guild.fetchInvites().then(guildInvites => {
     function memberCounter() {
         var member = bot.guilds.cache.get('587315116433997824');
