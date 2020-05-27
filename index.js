@@ -134,7 +134,7 @@ bot.on('guildMemberAdd', async member => {
         return ctx.font;
     };
 
-    const channel =  || member.guild.channels.cache.get("706600642419884083");
+    const channel =  member.guild.channels.cache.get("706600642419884083");
     if (!channel) return;
 
     const canvas = Canvas.createCanvas(700, 250);
@@ -201,7 +201,7 @@ bot.on('guildMemberRemove', member => {
     }
 
 
-    const channel =  || member.guild.channels.cache.get("706600642419884083");
+    const channel = member.guild.channels.cache.get("706600642419884083");
 
     if (!channel) return;
 
