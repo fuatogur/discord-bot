@@ -180,7 +180,7 @@ member.guild.fetchInvites().then(guildInvites => {
         // This is just to simplify the message being sent below (inviter doesn't have a tag property)
         var inviter = bot.users.cache.get(invite.inviter.id);
         // Get the log channel (change to your liking)
-        var logChannel = member.guild.channels.cache.get("587315116433997824");
+        var logChannel = member.guild.channels.cache.get("706600642419884083");
         logChannel.send(` ${member}, ${inviter} tarafından sunucuya katıldı. 📢 **1500** Kişi Olmamıza \`${1500-memberCounter()}\` Kişi Kaldı \`${memberCounter()}\` Kişiyiz!. ${invite.uses} davet `);
         // A real basic message with the information we need. 
         //logChannel.send(`${member.user.tag} joined using invite code ${invite.code} from ${inviter.tag}. Invite was used ${invite.uses} times since its creation.`);
